@@ -2,11 +2,11 @@
 
 [![Lean 4 CI](https://github.com/LingyeNBird/two-qubit-maximal-magic/actions/workflows/lean_ci.yml/badge.svg)](https://github.com/LingyeNBird/two-qubit-maximal-magic/actions/workflows/lean_ci.yml)
 
-A complete, pure-kernel **Lean 4** (`v4.36.0` + Mathlib4) proof of the **two-qubit ($n = 2$) maximal magic conjecture** of Q. Liu, I. Low, and Z. Yin (*"Maximal Magic for Two-qubit States"*, *Quantum Sci. Technol.* **11**, 015035, 2026; [`arXiv:2502.17550`](https://arxiv.org/abs/2502.17550)), which resolves the two-qubit $\max M_2 = \ln(16/7)$ subproblem of [Open Quantum Problem E28](https://openquantumproblems.com/p/E28) and extends it to all Rényi orders $\alpha \ge 2$, together with a complete formal characterization of all **480** maximal-magic states.
+A complete, pure-kernel **Lean 4** (`v4.36.0` + Mathlib4) proof of the **two-qubit ($n = 2$) maximal magic conjecture** of Q. Liu, I. Low, and Z. Yin (*"Maximal Magic for Two-qubit States"*, *Quantum Sci. Technol.* **11**, 015035, 2026; [`arXiv:2502.17550`](https://arxiv.org/abs/2502.17550)), which resolves the two-qubit $\max M_2 = \ln(16/7)$ subproblem of [Open Quantum Problem E28](https://openquantumproblems.com/p/E28) and extends it to all Rényi orders $\alpha \ge 2$, together with a complete formal characterization of all **480** maximal-magic states and their entanglement (concurrence) distribution.
 
 - **Zero `sorry`**
 - **Zero `native_decide`** (all polynomial normalizations, multiplications, and 1,409 group-orbit witnesses are verified inside Lean 4's pure kernel by definitional equality `rfl`)
-- **Standard axioms only**: all 24 audited theorems depend solely on `[propext, Classical.choice, Quot.sound]`
+- **Standard axioms only**: all 32 audited theorems depend solely on `[propext, Classical.choice, Quot.sound]`
 
 ---
 
@@ -23,10 +23,10 @@ To make the exact scope of the formalization transparent:
      - The maximizers form a **single two-qubit Clifford orbit** of $|\psi_{\mathrm{MUB}}\rangle$ (up to global phase), using the textbook definition `IsClifford2` of the two-qubit Clifford group;
      - The set of maximizer pure-state density matrices $\{|\psi\rangle\langle\psi|\}$ is finite and has **exact cardinality 480**;
      - A normalized pure two-qubit state maximizes $M_\alpha$ ($\alpha \ge 2$) **if and only if** it is a **two-qubit Pauli (multi-qubit Weyl–Heisenberg) 5-MUB fiducial state** (its 16-state two-qubit Pauli orbit partitions into 4 orthonormal bases extending to a complete set of $d+1 = 5$ mutually unbiased bases in $\mathbb{C}^4$).
+  4. **Exact entanglement (concurrence) dichotomy & counts**: Every maximizer has Wootters concurrence strictly in $\{1/2, 1/\sqrt{2}\}$ (hence **none** is maximally entangled and **none** is separable), with **exactly 192** maximizers having $C = 1/2$ and **exactly 288** having $C = 1/\sqrt{2}$.
 - **What is NOT addressed here**:
   1. **Higher dimensions of Open Quantum Problem E28**: E28 asks more generally about characterizing maximal magic states in dimensions where Weyl–Heisenberg SIC-POVMs do not exist (including $n \ge 4$ multi-qubit systems), and Liu–Low–Yin also conjecture a generalization for $n$-qubit states ($n \neq 1, 3$). Those higher-dimensional cases ($n \ge 3$) remain open and are **not** formalized here.
-  2. **Entanglement / concurrence distribution**: The auxiliary observation in Liu–Low–Yin that the concurrence of the 480 maximizers takes values in $\{1/2, 1/\sqrt{2}\}$ is not currently formalized.
-  3. **Weyl–Heisenberg convention in $d = 4$**: Following multi-qubit quantum information convention, the Weyl–Heisenberg (displacement) group used in `IsPauliMUBFiducial` is the **two-qubit Pauli group** $\mathcal{P}_2 = \{I, X, Y, Z\}^{\otimes 2}$ (not the cyclic $\mathbb{Z}_4$ clock–shift group).
+  2. **Weyl–Heisenberg convention in $d = 4$**: Following multi-qubit quantum information convention, the Weyl–Heisenberg (displacement) group used in `IsPauliMUBFiducial` is the **two-qubit Pauli group** $\mathcal{P}_2 = \{I, X, Y, Z\}^{\otimes 2}$ (not the cyclic $\mathbb{Z}_4$ clock–shift group).
 
 ---
 
@@ -46,6 +46,7 @@ Furthermore, for every $\alpha \ge 2$:
 3. **Single Clifford Orbit** (`clifford_lift_b6Plus`, `maximizer_iff_clifford_orbit`, `maximizer_iff_clifford_densityMatrix`): Equality holds iff $|\psi\rangle = \theta U |\psi_{\mathrm{MUB}}\rangle$ for some unit phase $|\theta| = 1$ and some two-qubit Clifford unitary $U$ (`IsClifford2 U`), equivalently $|\psi\rangle\langle\psi| = U |\psi_{\mathrm{MUB}}\rangle\langle\psi_{\mathrm{MUB}}| U^\dagger$.
 4. **Exact Cardinality 480** (`maximizer_densityMatrix_ncard_eq_480`): The set of pure-state density matrices $|\psi\rangle\langle\psi|$ of all maximizers is finite and has exact cardinality **480** ($15$ perfect matchings $\times$ $32$ sign/orientation classes).
 5. **5-MUB Fiducial Equivalence** (`mubFiducial_isPauliMUBFiducial`, `maximizer_iff_pauli_mub_fiducial`): Equality holds iff $|\psi\rangle$ is a two-qubit Pauli (multi-qubit Weyl–Heisenberg) MUB fiducial state (`IsPauliMUBFiducial ψ`), meaning $\{P|\psi\rangle : P \in \mathcal{P}_2\}$ partitions into 4 orthonormal bases extending to a complete set of $d+1 = 5$ mutually unbiased bases in $\mathbb{C}^4$.
+6. **Entanglement (Concurrence) Dichotomy & 192 / 288 Split** (`concurrence_eq_wootters`, `concurrence_sq_eq_linear_entropyA`, `maximizer_concurrence_dichotomy`, `maximizer_not_maximally_entangled_and_not_separable`, `maximizer_concurrence_distribution`): For every maximizer, the Wootters concurrence $C(|\psi\rangle) = 2|\psi_0\psi_3 - \psi_1\psi_2| = |\langle\psi^*|Y\otimes Y|\psi\rangle| = \sqrt{2(1 - \mathrm{Tr}(\rho_A^2))}$ takes only the two values $C \in \{1/2, 1/\sqrt{2}\}$ (so $0 < C < 1$: no maximizer is separable or maximally entangled). Among the 480 maximizer density matrices, **exactly 192** have $C = 1/2$ and **exactly 288** (including $|\psi_{\mathrm{MUB}}\rangle$) have $C = 1/\sqrt{2}$.
 
 *(Note: `sre` uses the natural logarithm `Real.log`. Dividing both sides by $\ln 2$ immediately yields the base-2 convention $\log_2(16/7)$, and the underlying core bound `pauli_moment_lower_bound_all_alpha` is independent of the logarithm base.)*
 
@@ -83,6 +84,10 @@ Furthermore, for every $\alpha \ge 2$:
    - Constructs an explicit algebraic bijection between all maximizers on `IsSkewOrth6` and `Fin 15 × Bool⁵` ($15 \times 32 = 480$), yielding both the single Clifford orbit theorem and `ncard = 480`.
    - Verifies that the 4 Pauli cosets of $\{II, ZI, IZ, ZZ\}$ acting on $|\psi_{\mathrm{MUB}}\rangle$ together with the computational basis form a complete set of 5 MUBs in $\mathbb{C}^4$, and uses Clifford covariance to establish the full equivalence `maximizer_iff_pauli_mub_fiducial`.
 
+5. **Entanglement / Concurrence Dichotomy (`TwoQubitMaximalMagic/Entanglement.lean`)**:
+   - Proves the exact identity $C(|\psi\rangle)^2 = 1 - (a_0^2 + a_4^2 + a_8^2) = 1 - (\langle XI\rangle^2 + \langle YI\rangle^2 + \langle ZI\rangle^2) = 2(1 - \mathrm{Tr}(\rho_A^2))$, where edges $\{0, 4, 8\}$ form the triangle $\{0, 1, 5\}$ in $K_6$.
+   - Any perfect matching of $K_6$ intersects the triangle $\{0, 1, 5\}$ in either **0** edges (6 bipartite matchings $\implies a_0^2+a_4^2+a_8^2 = 3/4 \implies C = 1/2$, $6 \times 32 = 192$ states) or **1** edge (9 matchings $\implies a_0^2+a_4^2+a_8^2 = 1/2 \implies C = 1/\sqrt{2}$, $9 \times 32 = 288$ states).
+
 ---
 
 ## Repository Structure
@@ -95,9 +100,10 @@ Furthermore, for every $\alpha \ge 2$:
 | `TwoQubitMaximalMagic/CertificateData.lean` | Exact integer polynomials `polyQ1..7`, weights `certC1..7`, `certD`, cofactors `polyU0/U01/V01`, and 1,409 `B6Plus` orbit witnesses |
 | `TwoQubitMaximalMagic/Certificate.lean` | Pure-kernel `rfl` certificate verification and `so6_fourth_power_bound`, `so6_equality_iff_spectrum`, `so6_equality_matching_counts` |
 | `TwoQubitMaximalMagic/MainTheorem.lean` | Sharp bounds for all $\alpha \ge 2$, attainment by `mubFiducial`, and Pauli-spectrum criterion |
-| `TwoQubitMaximalMagic/Maximizers.lean` | Maximal commuting Pauli triple, Pauli tomography, `IsClifford2` lift of $B_6^+$, single Clifford orbit, exact cardinality `480`, and 5-MUB fiducial equivalence |
+| `TwoQubitMaximalMagic/Maximizers.lean` | Maximal commuting Pauli triple, Pauli tomography, `IsClifford2` realization of $B_6^+$, single Clifford orbit, exact cardinality `480`, and 5-MUB fiducial equivalence |
+| `TwoQubitMaximalMagic/Entanglement.lean` | Wootters concurrence, reduced density matrices, strict $C \in \{1/2, 1/\sqrt{2}\}$ dichotomy, no maximally entangled / separable maximizers, and exact `192 / 288` split |
 | `TwoQubitMaximalMagic.lean` | Root library export |
-| `Audit.lean` | Standalone `#check` and `#print axioms` audit script (24 theorems) |
+| `Audit.lean` | Standalone `#check` and `#print axioms` audit script (32 theorems) |
 | `.github/workflows/lean_ci.yml` | Automated GitHub Actions CI compiling the full proof and checking `Audit.lean` axioms |
 
 ---
@@ -118,11 +124,12 @@ lake env lean Audit.lean
 1. **Audit the definitions**:
    - Core SRE definitions in `TwoQubitMaximalMagic/Defs.lean`: `State`, `normSq`, `IsNormalized`, `pauli1`, `pauli2`, `pauliExp`, `pauliMoment`, `sre`.
    - Maximizer definitions in `TwoQubitMaximalMagic/Maximizers.lean`: `densityMatrix`, `IsClifford2`, `innerState`, `IsCompleteMUB`, `IsPauliMUBFiducial`.
+   - Entanglement definitions in `TwoQubitMaximalMagic/Entanglement.lean`: `concurrence`, `reducedDensityA`, `reducedDensityB`.
 2. **Verify zero shortcuts** (output should contain only doc comments):
    ```bash
    grep -rnE '\b(sorry|axiom|native_decide|unsafe|implemented_by|extern)\b' TwoQubitMaximalMagic.lean TwoQubitMaximalMagic/
    ```
-3. **Verify axioms** via `lake env lean Audit.lean`: every one of the 24 printed theorems must depend **only** on `[propext, Classical.choice, Quot.sound]`.
+3. **Verify axioms** via `lake env lean Audit.lean`: every one of the 32 printed theorems must depend **only** on `[propext, Classical.choice, Quot.sound]`.
 
 ---
 
@@ -131,3 +138,4 @@ lake env lean Audit.lean
 - Q. Liu, I. Low, Z. Yin, *"Maximal Magic for Two-qubit States"*, *Quantum Sci. Technol.* **11**, 015035 (2026), [`arXiv:2502.17550`](https://arxiv.org/abs/2502.17550).
 - Open Quantum Problems, Problem E28 (two-qubit subproblem): [https://openquantumproblems.com/p/E28](https://openquantumproblems.com/p/E28).
 - L. Leone, S. F. E. Oliviero, A. Hamma, *"Stabilizer Rényi Entropy"*, *Phys. Rev. Lett.* **128**, 050402 (2022).
+- W. K. Wootters, *"Entanglement of Formation of an Arbitrary State of Two Qubits"*, *Phys. Rev. Lett.* **80**, 2245 (1998).

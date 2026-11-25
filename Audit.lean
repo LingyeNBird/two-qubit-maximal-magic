@@ -29,6 +29,14 @@ and axiom dependencies of every main theorem. Expected axioms: ONLY
 #check @TwoQubitMaximalMagic.maximizer_densityMatrix_ncard_eq_480
 #check @TwoQubitMaximalMagic.mubFiducial_isPauliMUBFiducial
 #check @TwoQubitMaximalMagic.maximizer_iff_pauli_mub_fiducial
+#check @TwoQubitMaximalMagic.concurrence_eq_wootters
+#check @TwoQubitMaximalMagic.concurrence_sq_eq_one_sub_localA
+#check @TwoQubitMaximalMagic.concurrence_sq_eq_one_sub_localB
+#check @TwoQubitMaximalMagic.concurrence_sq_eq_linear_entropyA
+#check @TwoQubitMaximalMagic.mubFiducial_concurrence
+#check @TwoQubitMaximalMagic.maximizer_concurrence_dichotomy
+#check @TwoQubitMaximalMagic.maximizer_not_maximally_entangled_and_not_separable
+#check @TwoQubitMaximalMagic.maximizer_concurrence_distribution
 
 #print axioms TwoQubitMaximalMagic.so6_fourth_power_bound
 #print axioms TwoQubitMaximalMagic.so6_equality_iff_spectrum
@@ -54,3 +62,11 @@ and axiom dependencies of every main theorem. Expected axioms: ONLY
 #print axioms TwoQubitMaximalMagic.maximizer_densityMatrix_ncard_eq_480
 #print axioms TwoQubitMaximalMagic.mubFiducial_isPauliMUBFiducial
 #print axioms TwoQubitMaximalMagic.maximizer_iff_pauli_mub_fiducial
+#print axioms TwoQubitMaximalMagic.concurrence_eq_wootters
+#print axioms TwoQubitMaximalMagic.concurrence_sq_eq_one_sub_localA
+#print axioms TwoQubitMaximalMagic.concurrence_sq_eq_one_sub_localB
+#print axioms TwoQubitMaximalMagic.concurrence_sq_eq_linear_entropyA
+#print axioms TwoQubitMaximalMagic.mubFiducial_concurrence
+#print axioms TwoQubitMaximalMagic.maximizer_concurrence_dichotomy
+#print axioms TwoQubitMaximalMagic.maximizer_not_maximally_entangled_and_not_separable
+#print axioms TwoQubitMaximalMagic.maximizer_concurrence_distribution

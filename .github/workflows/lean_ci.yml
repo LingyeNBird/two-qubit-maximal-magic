@@ -34,12 +34,12 @@ jobs:
           matches = re.findall(r"'([^']+)' depends on axioms: \[([^\]]*)\]", text, flags=re.S)
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           print(f"Audited theorems: {len(matches)}")
-          assert len(matches) == 24, f"Expected 24 audited theorems, got {len(matches)}"
+          assert len(matches) == 32, f"Expected 32 audited theorems, got {len(matches)}"
           for name, ax_str in matches:
               axs = {a.strip() for a in ax_str.split(",") if a.strip()}
               bad = axs - allowed
               assert not bad, f"{name} uses non-standard axioms: {bad}"
-          print("All 24 audited theorems depend solely on standard Lean axioms.")
+          print("All 32 audited theorems depend solely on standard Lean axioms.")
           EOF
 
       - name: Verify zero sorry/native_decide/custom axioms in source code

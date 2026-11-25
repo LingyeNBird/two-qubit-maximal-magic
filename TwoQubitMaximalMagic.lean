@@ -1,5 +1,6 @@
 import TwoQubitMaximalMagic.MainTheorem
 import TwoQubitMaximalMagic.Maximizers
+import TwoQubitMaximalMagic.Entanglement
 
 /-!
 # Formal Proof of the Two-Qubit Maximal Magic Conjecture
@@ -27,4 +28,12 @@ Root module re-exporting all definitions and proved theorems:
 - `TwoQubitMaximalMagic.maximizer_densityMatrix_ncard_eq_480`
 - `TwoQubitMaximalMagic.mubFiducial_isPauliMUBFiducial`
 - `TwoQubitMaximalMagic.maximizer_iff_pauli_mub_fiducial`
+- `TwoQubitMaximalMagic.concurrence_eq_wootters`
+- `TwoQubitMaximalMagic.concurrence_sq_eq_one_sub_localA`
+- `TwoQubitMaximalMagic.concurrence_sq_eq_one_sub_localB`
+- `TwoQubitMaximalMagic.concurrence_sq_eq_linear_entropyA`
+- `TwoQubitMaximalMagic.mubFiducial_concurrence`
+- `TwoQubitMaximalMagic.maximizer_concurrence_dichotomy`
+- `TwoQubitMaximalMagic.maximizer_not_maximally_entangled_and_not_separable`
+- `TwoQubitMaximalMagic.maximizer_concurrence_distribution`
 -/
