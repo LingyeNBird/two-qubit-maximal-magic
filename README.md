@@ -79,7 +79,7 @@ Furthermore, for every $\alpha \ge 2$:
 4. **Complete Maximizer Characterization (`TwoQubitMaximalMagic/Maximizers.lean`)**:
    - Proves two distinct non-identity Paulis commute iff their $K_6$ edges are vertex-disjoint (and anticommute iff they share a vertex), translating the $K_6$ perfect matching into a maximal pairwise-commuting Pauli triple.
    - Proves Pauli tomography $|\psi\rangle\langle\psi| = \frac{1}{4}\sum_{P\in\mathcal{P}_2} \langle\psi|P|\psi\rangle P$, hence pure states agree up to global phase iff they have identical `so6Edge` vectors.
-   - Lifts the 5 adjacent $90^\circ$ signed-swap generators of $B_6^+$ to 5 explicit $\pi/2$ Pauli-rotation Clifford unitaries $U_k = \frac{1}{\sqrt{2}}(I + i P_{(k,k+1)}) \in \mathrm{Cl}_2$, proving that all of $B_6^+$ lifts surjectively into the textbook two-qubit Clifford group (`IsClifford2`).
+   - Lifts the 5 adjacent $90^\circ$ signed-swap generators of $B_6^+$ to 5 explicit $\pi/2$ Pauli-rotation Clifford unitaries $U_k = \frac{1}{\sqrt{2}}(I + i P_{(k,k+1)}) \in \mathrm{Cl}_2$, proving that every element of $B_6^+$ is realized by a textbook two-qubit Clifford unitary (`IsClifford2`) (equivalently, the induced action of the Clifford group on `so6Edge` surjects onto $B_6^+$).
    - Constructs an explicit algebraic bijection between all maximizers on `IsSkewOrth6` and `Fin 15 × Bool⁵` ($15 \times 32 = 480$), yielding both the single Clifford orbit theorem and `ncard = 480`.
    - Verifies that the 4 Pauli cosets of $\{II, ZI, IZ, ZZ\}$ acting on $|\psi_{\mathrm{MUB}}\rangle$ together with the computational basis form a complete set of 5 MUBs in $\mathbb{C}^4$, and uses Clifford covariance to establish the full equivalence `maximizer_iff_pauli_mub_fiducial`.
 

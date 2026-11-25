@@ -27,7 +27,7 @@ characterizations of the two-qubit maximal magic states:
    Two normalized pure states define the same density matrix `|ψ⟩⟨ψ|` iff they agree up to a
    unit global phase iff they have identical `so6Edge` vectors.
 
-3. **Two-qubit Clifford group & surjective lift of `B₆⁺`**
+3. **Two-qubit Clifford group & Clifford realization of `B₆⁺`**
    (`IsClifford2`, `clifford_lift_b6Plus`):
    Using the textbook definition of the two-qubit Clifford group (`Uᴴ * U = 1` normalizing
    `{±1, ±i} · P₂`), every signed permutation `g ∈ B₆⁺` lifts to a Clifford unitary `U` whose
@@ -566,7 +566,7 @@ theorem densityMatrix_eq_iff_phase {ψ φ : State} (hψ : IsNormalized ψ) (_hφ
     rw [show ψ i * star (ψ j) = (θ * star θ) * (ψ i * star (ψ j)) by rw [hθmul, one_mul]]
     ring
 
-/-! ### Part 3: The Two-Qubit Clifford Group and Surjective Lift of `B₆⁺` -/
+/-! ### Part 3: The Two-Qubit Clifford Group and Realizing `B₆⁺` via Clifford Unitaries -/
 
 private lemma mat_mul_eq_one_comm {A B : Matrix (Fin 4) (Fin 4) ℂ} (h : A * B = 1) :
     B * A = 1 := by
@@ -807,7 +807,7 @@ lemma phase_preserves_sre {θ : ℂ} (hθ : ‖θ‖ = 1) (ψ : State) (α : ℝ
   unfold sre pauliMoment
   simp_rw [hexp]
 
-/-! #### Explicit 5-Generator Surjective Lift of `B₆⁺` into `IsClifford2` -/
+/-! #### Explicit 5-Generator Clifford Lift of `B₆⁺` -/
 
 /-- The 5 adjacent edges `(k, k+1)` in `K₆`: `0 ↦ (0,1)`, `1 ↦ (1,2)`, `2 ↦ (2,3)`,
     `3 ↦ (3,4)`, `4 ↦ (4,5)`. -/
@@ -1247,7 +1247,7 @@ lemma b6Plus_mem_closure_b6Gen (g : B6Plus) :
   rw [hg_eq]
   exact H.mul_mem hd_mem hh
 
-/-- **Surjective Clifford Lift of `B₆⁺`**: Every signed permutation `g ∈ B₆⁺` is realized on
+/-- **Clifford Lift of `B₆⁺`**: Every signed permutation `g ∈ B₆⁺` is realized on
     `so6Edge` by a two-qubit Clifford unitary `U`. -/
 theorem clifford_lift_b6Plus (g : B6Plus) :
     ∃ U : Matrix (Fin 4) (Fin 4) ℂ, IsClifford2 U ∧
