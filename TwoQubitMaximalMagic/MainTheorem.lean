@@ -3,7 +3,7 @@ import Mathlib.Analysis.MeanInequalities
 import Mathlib.Tactic
 
 /-!
-# Proof of the Two-Qubit Maximal Magic Conjecture (Open Quantum Problem E28)
+# Proof of the Two-Qubit Maximal Magic Conjecture (Two-Qubit Case of Open Quantum Problem E28)
 
 Main results proved in this file (for all normalized pure two-qubit states `ψ : Fin 4 → ℂ`):
 1. `pauli_fourth_moment_lower_bound`:
@@ -12,15 +12,22 @@ Main results proved in this file (for all normalized pure two-qubit states `ψ :
    `M_2(|ψ⟩) ≤ log (16 / 7)`.
 3. `pauli_moment_lower_bound_all_alpha`:
    For every `α ≥ 2`, `∑_{P ∈ P_2} |⟨ψ|P|ψ⟩|^{2α} ≥ 1 + 3 · 4^{1 - α} = 1 + 12 · 4^{-α}`.
-4. `sre_upper_bound_all_alpha` (**Full E28 Conjecture, Liu–Low–Yin QST 2026**):
+4. `sre_upper_bound_all_alpha` (**Two-Qubit Maximal Magic Conjecture, Liu–Low–Yin QST 2026**):
    For every `α ≥ 2`, `M_α(|ψ⟩) ≤ (1 / (1 - α)) * log ((1 + 3 · 4^{1 - α}) / 4)`.
-5. `mub_fiducial_attains_bound`:
-   The explicit Weyl–Heisenberg MUB fiducial state `|ψ_MUB⟩ = (1/2, 1/2, 1/2, i/2)` is normalized
-   and achieves equality for every `α ≥ 2` (in particular `M_2(|ψ_MUB⟩) = log (16 / 7)`).
-6. `maximizer_iff_mub_spectrum`:
+5. `mub_fiducial_attains_moment`, `mub_fiducial_attains_sre`, `mub_fiducial_attains_sre2`:
+   The explicit state `mubFiducial = (1/2, 1/2, 1/2, i/2)` is normalized and achieves exact
+   equality for every `α ≥ 2` (in particular `M_2(mubFiducial) = log (16 / 7)`).
+6. `maximizer_iff_mub_spectrum`, `maximizer_matching_counts`:
    For every `α ≥ 2`, equality holds iff the 15 non-identity Pauli expectations lie in `{0, ±1/2}`,
-   with exactly 3 vanishing expectations (forming a perfect matching in `K₆` / maximal commuting
-   triple) and 12 expectations of magnitude `1/2`.
+   with exactly 3 vanishing expectations (forming a perfect matching in `K₆`) and 12 expectations
+   of magnitude `1/2`.
+
+See `TwoQubitMaximalMagic/Maximizers.lean` for the further formal proofs that:
+- the 3 vanishing Paulis form a maximal pairwise-commuting Pauli triple,
+- the maximizers form a single two-qubit Clifford orbit of `mubFiducial` of exact cardinality 480
+  (as pure-state density matrices), and
+- a normalized state maximizes `M_α` (`α ≥ 2`) iff it is a two-qubit Pauli (multi-qubit
+  Weyl–Heisenberg) 5-MUB fiducial state.
 -/
 
 namespace TwoQubitMaximalMagic
@@ -178,7 +185,7 @@ theorem pauli_moment_lower_bound_all_alpha {ψ : State} (hψ : IsNormalized ψ)
   rw [pauliMoment_eq_one_add_so6 ψ hψ α]
   linarith [so6_moment_lower_bound (so6Edge_isSkewOrth6 hψ) hα]
 
-/-- **Main Theorem (Two-Qubit Maximal Magic Conjecture / Open Quantum Problem E28)**:
+/-- **Main Theorem (Two-Qubit Maximal Magic Conjecture / Two-Qubit Case of Open Quantum Problem E28)**:
     For every normalized pure two-qubit state `|ψ⟩ ∈ ℂ⁴` and every Rényi order `α ≥ 2`,
     `M_α(|ψ⟩) ≤ (1 / (1 - α)) * log ((1 + 3 · 4^{1 - α}) / 4)`. -/
 theorem sre_upper_bound_all_alpha {ψ : State} (hψ : IsNormalized ψ)

@@ -17,6 +17,18 @@ and axiom dependencies of every main theorem. Expected axioms: ONLY
 #check @TwoQubitMaximalMagic.mub_fiducial_attains_sre2
 #check @TwoQubitMaximalMagic.maximizer_iff_mub_spectrum
 #check @TwoQubitMaximalMagic.maximizer_matching_counts
+#check @TwoQubitMaximalMagic.pauli_commute_iff_edgeDisjoint
+#check @TwoQubitMaximalMagic.pauli_anticommute_iff_not_edgeDisjoint
+#check @TwoQubitMaximalMagic.maximizer_zero_paulis_maximal_commuting
+#check @TwoQubitMaximalMagic.densityMatrix_eq_pauli_expansion
+#check @TwoQubitMaximalMagic.densityMatrix_eq_iff_so6Edge_eq
+#check @TwoQubitMaximalMagic.densityMatrix_eq_iff_phase
+#check @TwoQubitMaximalMagic.clifford_lift_b6Plus
+#check @TwoQubitMaximalMagic.maximizer_iff_clifford_orbit
+#check @TwoQubitMaximalMagic.maximizer_iff_clifford_densityMatrix
+#check @TwoQubitMaximalMagic.maximizer_densityMatrix_ncard_eq_480
+#check @TwoQubitMaximalMagic.mubFiducial_isPauliMUBFiducial
+#check @TwoQubitMaximalMagic.maximizer_iff_pauli_mub_fiducial
 
 #print axioms TwoQubitMaximalMagic.so6_fourth_power_bound
 #print axioms TwoQubitMaximalMagic.so6_equality_iff_spectrum
@@ -30,3 +42,15 @@ and axiom dependencies of every main theorem. Expected axioms: ONLY
 #print axioms TwoQubitMaximalMagic.mub_fiducial_attains_sre2
 #print axioms TwoQubitMaximalMagic.maximizer_iff_mub_spectrum
 #print axioms TwoQubitMaximalMagic.maximizer_matching_counts
+#print axioms TwoQubitMaximalMagic.pauli_commute_iff_edgeDisjoint
+#print axioms TwoQubitMaximalMagic.pauli_anticommute_iff_not_edgeDisjoint
+#print axioms TwoQubitMaximalMagic.maximizer_zero_paulis_maximal_commuting
+#print axioms TwoQubitMaximalMagic.densityMatrix_eq_pauli_expansion
+#print axioms TwoQubitMaximalMagic.densityMatrix_eq_iff_so6Edge_eq
+#print axioms TwoQubitMaximalMagic.densityMatrix_eq_iff_phase
+#print axioms TwoQubitMaximalMagic.clifford_lift_b6Plus
+#print axioms TwoQubitMaximalMagic.maximizer_iff_clifford_orbit
+#print axioms TwoQubitMaximalMagic.maximizer_iff_clifford_densityMatrix
+#print axioms TwoQubitMaximalMagic.maximizer_densityMatrix_ncard_eq_480
+#print axioms TwoQubitMaximalMagic.mubFiducial_isPauliMUBFiducial
+#print axioms TwoQubitMaximalMagic.maximizer_iff_pauli_mub_fiducial

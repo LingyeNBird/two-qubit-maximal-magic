@@ -7,7 +7,7 @@ import Mathlib.Tactic
 open scoped Matrix
 
 /-!
-# Definitions for the Two-Qubit Maximal Magic Conjecture (Open Quantum Problem E28)
+# Definitions for the Two-Qubit Maximal Magic Conjecture (Two-Qubit Case of Open Quantum Problem E28)
 
 This file defines:
 - Pure two-qubit states `ψ : Fin 4 → ℂ` and normalization `IsNormalized ψ`.
