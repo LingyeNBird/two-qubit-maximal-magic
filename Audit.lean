@@ -1,0 +1,32 @@
+import TwoQubitMaximalMagic
+
+/-!
+# Axiom & Statement Audit Script
+
+Run `lake env lean Audit.lean` after `lake build` to verify the exact statements
+and axiom dependencies of every main theorem. Expected axioms: ONLY
+`[propext, Classical.choice, Quot.sound]` (zero `sorryAx`, zero `Lean.ofReduceBool`).
+-/
+
+#check @TwoQubitMaximalMagic.pauli_fourth_moment_lower_bound
+#check @TwoQubitMaximalMagic.sre2_upper_bound
+#check @TwoQubitMaximalMagic.pauli_moment_lower_bound_all_alpha
+#check @TwoQubitMaximalMagic.sre_upper_bound_all_alpha
+#check @TwoQubitMaximalMagic.mub_fiducial_attains_moment
+#check @TwoQubitMaximalMagic.mub_fiducial_attains_sre
+#check @TwoQubitMaximalMagic.mub_fiducial_attains_sre2
+#check @TwoQubitMaximalMagic.maximizer_iff_mub_spectrum
+#check @TwoQubitMaximalMagic.maximizer_matching_counts
+
+#print axioms TwoQubitMaximalMagic.so6_fourth_power_bound
+#print axioms TwoQubitMaximalMagic.so6_equality_iff_spectrum
+#print axioms TwoQubitMaximalMagic.so6_equality_matching_counts
+#print axioms TwoQubitMaximalMagic.pauli_fourth_moment_lower_bound
+#print axioms TwoQubitMaximalMagic.sre2_upper_bound
+#print axioms TwoQubitMaximalMagic.pauli_moment_lower_bound_all_alpha
+#print axioms TwoQubitMaximalMagic.sre_upper_bound_all_alpha
+#print axioms TwoQubitMaximalMagic.mub_fiducial_attains_moment
+#print axioms TwoQubitMaximalMagic.mub_fiducial_attains_sre
+#print axioms TwoQubitMaximalMagic.mub_fiducial_attains_sre2
+#print axioms TwoQubitMaximalMagic.maximizer_iff_mub_spectrum
+#print axioms TwoQubitMaximalMagic.maximizer_matching_counts
