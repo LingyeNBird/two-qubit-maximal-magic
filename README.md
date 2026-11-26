@@ -1,6 +1,7 @@
 # Formal Proof of the Two-Qubit Maximal Magic Conjecture (Two-Qubit Case of Open Quantum Problem E28)
 
 [![Lean 4 CI](https://github.com/LingyeNBird/two-qubit-maximal-magic/actions/workflows/lean_ci.yml/badge.svg)](https://github.com/LingyeNBird/two-qubit-maximal-magic/actions/workflows/lean_ci.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24565157.svg)](https://doi.org/10.5281/zenodo.24565157)
 
 A complete, pure-kernel **Lean 4** (`v4.36.0` + Mathlib4) proof of the **two-qubit ($n = 2$) maximal magic conjecture** of Q. Liu, I. Low, and Z. Yin (*"Maximal Magic for Two-qubit States"*, *Quantum Sci. Technol.* **11**, 015035, 2026; [`arXiv:2502.17550`](https://arxiv.org/abs/2502.17550)), which resolves the two-qubit $\max M_2 = \ln(16/7)$ subproblem of [Open Quantum Problem E28](https://openquantumproblems.com/p/E28) and extends it to all Rényi orders $\alpha \ge 2$, together with a complete formal characterization of all **480** maximal-magic states and their entanglement (concurrence) distribution.
 
@@ -162,6 +163,7 @@ lake env lean Audit.lean
 ## Author & AI Transparency Statement
 
 - **Author**: Zhaoting Ye (Independent Researcher; ORCID: [0009-0006-8457-0482](https://orcid.org/0009-0006-8457-0482); Email: `lingyenbird@qq.com`)
+- **Archival DOI (Zenodo)**: [`10.5281/zenodo.24565157`](https://doi.org/10.5281/zenodo.24565157) (all versions) / [`10.5281/zenodo.24565158`](https://doi.org/10.5281/zenodo.24565158) (`v1.1`)
 - **AI Assistance & Independent Verification**: In the interest of full transparency, the bulk of the technical work in this repository—including mathematical proof discovery, construction of the SOS optimization and certificate-extraction pipeline, Lean 4 formalization, and manuscript drafting—was carried out using AI systems under the author's problem selection, direction, and oversight. The mathematical validity of every result does not rely on trusting any AI system or human check: the algebraic SOS identity is independently verified in exact integer arithmetic by `scripts/verify_certificate.py` (`< 1 s`), and all 32 audited declarations are machine-checked end-to-end inside Lean 4's pure kernel (`Audit.lean`, zero `sorry`, zero `native_decide`, standard foundational axioms only).
 
 ---
