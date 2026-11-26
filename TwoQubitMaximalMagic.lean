@@ -6,7 +6,10 @@ import TwoQubitMaximalMagic.Entanglement
 # Formal Proof of the Two-Qubit Maximal Magic Conjecture
 (Two-Qubit Case of Open Quantum Problem E28)
 
-Root module re-exporting all definitions and proved theorems:
+Root module re-exporting all definitions and proved theorems (32 audited theorems):
+- `TwoQubitMaximalMagic.so6_fourth_power_bound`
+- `TwoQubitMaximalMagic.so6_equality_iff_spectrum`
+- `TwoQubitMaximalMagic.so6_equality_matching_counts`
 - `TwoQubitMaximalMagic.pauli_fourth_moment_lower_bound`
 - `TwoQubitMaximalMagic.sre2_upper_bound`
 - `TwoQubitMaximalMagic.pauli_moment_lower_bound_all_alpha`

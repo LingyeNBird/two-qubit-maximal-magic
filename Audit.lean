@@ -8,6 +8,9 @@ and axiom dependencies of every main theorem. Expected axioms: ONLY
 `[propext, Classical.choice, Quot.sound]` (zero `sorryAx`, zero `Lean.ofReduceBool`).
 -/
 
+#check @TwoQubitMaximalMagic.so6_fourth_power_bound
+#check @TwoQubitMaximalMagic.so6_equality_iff_spectrum
+#check @TwoQubitMaximalMagic.so6_equality_matching_counts
 #check @TwoQubitMaximalMagic.pauli_fourth_moment_lower_bound
 #check @TwoQubitMaximalMagic.sre2_upper_bound
 #check @TwoQubitMaximalMagic.pauli_moment_lower_bound_all_alpha

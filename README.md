@@ -6,7 +6,8 @@ A complete, pure-kernel **Lean 4** (`v4.36.0` + Mathlib4) proof of the **two-qub
 
 - **Zero `sorry`**
 - **Zero `native_decide`** (all polynomial normalizations, multiplications, and 1,409 group-orbit witnesses are verified inside Lean 4's pure kernel by definitional equality `rfl`)
-- **Standard axioms only**: all 32 audited theorems depend solely on `[propext, Classical.choice, Quot.sound]`
+- **Standard axioms only**: all 32 audited declarations depend solely on `[propext, Classical.choice, Quot.sound]`
+- **Reproducible discovery & Lean-free verification**: complete zero-dependency C++17/Python discovery pipeline and a standalone exact-integer Python verifier (`scripts/verify_certificate.py`, `< 1 s`) are included in `scripts/`
 
 ---
 
@@ -25,7 +26,7 @@ To make the exact scope of the formalization transparent:
      - A normalized pure two-qubit state maximizes $M_\alpha$ ($\alpha \ge 2$) **if and only if** it is a **two-qubit Pauli (multi-qubit Weyl–Heisenberg) 5-MUB fiducial state** (its 16-state two-qubit Pauli orbit partitions into 4 orthonormal bases extending to a complete set of $d+1 = 5$ mutually unbiased bases in $\mathbb{C}^4$).
   4. **Exact entanglement (concurrence) dichotomy & counts**: Every maximizer has Wootters concurrence strictly in $\{1/2, 1/\sqrt{2}\}$ (hence **none** is maximally entangled and **none** is separable), with **exactly 192** maximizers having $C = 1/2$ and **exactly 288** having $C = 1/\sqrt{2}$.
 - **What is NOT addressed here**:
-  1. **Higher dimensions of Open Quantum Problem E28**: E28 asks more generally about characterizing maximal magic states in dimensions where Weyl–Heisenberg SIC-POVMs do not exist (including $n \ge 4$ multi-qubit systems), and Liu–Low–Yin also conjecture a generalization for $n$-qubit states ($n \neq 1, 3$). Those higher-dimensional cases ($n \ge 3$) remain open and are **not** formalized here.
+  1. **Higher dimensions of Open Quantum Problem E28**: While $n = 1$ (tetrahedron states) and $n = 3$ (Hoggar lines) admit $\mathcal{P}_n$-covariant SIC-POVMs saturating $M_\alpha^{\mathrm{SIC}}(2^n)$, E28 asks more generally about characterizing maximal magic states in dimensions where Weyl–Heisenberg SIC-POVMs do not exist (including $n \ge 4$ multi-qubit systems), and Liu–Low–Yin also conjecture a generalization for $n$-qubit states ($n \neq 1, 3$). Those higher non-SIC cases ($n \ge 4$) remain open and are **not** formalized here.
   2. **Weyl–Heisenberg convention in $d = 4$**: Following multi-qubit quantum information convention, the Weyl–Heisenberg (displacement) group used in `IsPauliMUBFiducial` is the **two-qubit Pauli group** $\mathcal{P}_2 = \{I, X, Y, Z\}^{\otimes 2}$ (not the cyclic $\mathbb{Z}_4$ clock–shift group).
 
 ---
@@ -58,7 +59,7 @@ Furthermore, for every $\alpha \ge 2$:
    Under the Hodge-real isomorphism $\Lambda^2 \mathbb{C}^4 \cong \mathbb{R}^6$, the 15 signed non-identity Pauli expectations of any normalized state $|\psi\rangle \in \mathbb{C}^4$ form the upper-triangular entries $a = (a_0, \dots, a_{14}) \in \mathbb{R}^{15}$ of a real $6\times 6$ skew-symmetric orthogonal matrix $A = \mathrm{toSkewMat}(a) \in SO(6)$ satisfying:
    - $A^T = -A$,
    - $A^2 = -I_6$ (in particular $\sum_{e=0}^{14} a_e^2 = 3$),
-   - Hodge self-duality ($\mathrm{Pf}(A) = +1$): $\Phi(A)_{ij} := \sum_{\sigma \in S_6,\; \sigma(0)=i,\; \sigma(1)=j} \operatorname{sgn}(\sigma) A_{\sigma(2)\sigma(3)} A_{\sigma(4)\sigma(5)} = 8 A_{ij}$.
+   - Orientation (Pfaffian) condition ($\mathrm{Pf}(A) = +1$): $\Phi(A)_{ij} := \sum_{\sigma \in S_6,\; \sigma(0)=i,\; \sigma(1)=j} \operatorname{sgn}(\sigma) A_{\sigma(2)\sigma(3)} A_{\sigma(4)\sigma(5)} = 8 A_{ij}$.
 
    The finite determinant-$+1$ signed-permutation group $B_6^+ \subset SO(6)$ (order $6!\cdot 2^5 = 23,040$) acts on $\mathbb{R}^{15}$, preserves `IsSkewOrth6`, and acts transitively (up to sign) on all 15 edges.
 
@@ -103,12 +104,37 @@ Furthermore, for every $\alpha \ge 2$:
 | `TwoQubitMaximalMagic/Maximizers.lean` | Maximal commuting Pauli triple, Pauli tomography, `IsClifford2` realization of $B_6^+$, single Clifford orbit, exact cardinality `480`, and 5-MUB fiducial equivalence |
 | `TwoQubitMaximalMagic/Entanglement.lean` | Wootters concurrence, reduced density matrices, strict $C \in \{1/2, 1/\sqrt{2}\}$ dichotomy, no maximally entangled / separable maximizers, and exact `192 / 288` split |
 | `TwoQubitMaximalMagic.lean` | Root library export |
-| `Audit.lean` | Standalone `#check` and `#print axioms` audit script (32 theorems) |
+| `Audit.lean` | Standalone `#check` and `#print axioms` audit script (32 audited declarations) |
+| `scripts/exact_certificate.json` | Machine-readable exact integer SOS certificate ($D, c_k, Q_k$, cofactors, and 1,409 $B_6^+$ witnesses) |
+| `scripts/verify_certificate.py` | Standalone zero-dependency Python verifier (`< 1 s`, checks direct $B_6^+$ symmetrization and all 1,409 witnesses without Lean) |
+| `scripts/extract_int_cert.cpp`, `verify_exact_Q.py`, `compute_cofactors.py`, `build_witness_table.py`, `gen_lean_cert.py` | Complete 5-stage reproducible discovery pipeline reproducing `exact_certificate.json` and `CertificateData.lean` byte-for-byte |
+| `paper/main.tex`, `paper/references.bib`, `paper/main.pdf` | Full manuscript source, bibliography, and compiled PDF |
 | `.github/workflows/lean_ci.yml` | Automated GitHub Actions CI compiling the full proof and checking `Audit.lean` axioms |
 
 ---
 
 ## How to Verify Independently
+
+### Option A: Standalone Python Check of the Exact SOS Certificate (No Lean Required, `< 1 s`)
+
+Requires only Python 3 standard library:
+
+```bash
+python3 scripts/verify_certificate.py
+```
+
+To also reproduce the entire certificate discovery from scratch (requires `g++` with C++17 and Python 3):
+
+```bash
+cd scripts
+g++ -O3 -std=c++17 extract_int_cert.cpp -o extract_int_cert
+./extract_int_cert cert_polys.txt
+python3 verify_exact_Q.py
+python3 build_witness_table.py   # imports and runs compute_cofactors.py automatically
+python3 gen_lean_cert.py --check
+```
+
+### Option B: Full End-to-End Lean 4 Pure-Kernel Verification
 
 Requirements: [elan](https://github.com/leanprover/elan) (Lean 4 toolchain manager; installs `leanprover/lean4:v4.36.0` automatically from `lean-toolchain`). You can also inspect automated public build and axiom-audit logs directly in the **Actions** tab of this repository.
 
