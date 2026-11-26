@@ -1,0 +1,23 @@
+{
+  "title": "Rigorous Resolution of the Two-Qubit Maximal Magic Conjecture via SO(6) Geometry and Certified Equivariant Sum-of-Squares Proofs",
+  "creators": [
+    {
+      "name": "Ye, Zhaoting",
+      "affiliation": "Independent Researcher",
+      "orcid": "0009-0006-8457-0482"
+    }
+  ],
+  "description": "Complete, pure-kernel Lean 4 formalization (32 audited declarations, zero sorry, zero native_decide, standard foundational axioms only), reproducible C++17/Python exact degree-8 equivariant sum-of-squares (SOS) certificate discovery pipeline, standalone zero-dependency Python verifier (< 1 s), and full manuscript resolving the two-qubit (n = 2) maximal magic conjecture of Liu, Low, and Yin (Quantum Sci. Technol. 11, 015035, 2026) for all Renyi orders alpha >= 2, including the sharp upper bound max M_2 = ln(16/7), complete classification of all 480 maximizers as a single Clifford orbit coinciding with two-qubit Pauli 5-MUB fiducial states, and the exact Wootters concurrence dichotomy C in {1/2, 1/sqrt(2)} with 192 / 288 state counts.",
+  "keywords": [
+    "quantum information",
+    "stabilizer Renyi entropy",
+    "quantum magic",
+    "nonstabilizerness",
+    "mutually unbiased bases",
+    "sum-of-squares optimization",
+    "Lean 4",
+    "formal verification"
+  ],
+  "license": "MIT",
+  "upload_type": "software"
+}

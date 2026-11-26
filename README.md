@@ -159,6 +159,13 @@ lake env lean Audit.lean
 
 ---
 
+## Author & AI Transparency Statement
+
+- **Author**: Zhaoting Ye (Independent Researcher; ORCID: [0009-0006-8457-0482](https://orcid.org/0009-0006-8457-0482); Email: `lingyenbird@qq.com`)
+- **AI Assistance & Independent Verification**: In the interest of full transparency, the bulk of the technical work in this repository—including mathematical proof discovery, construction of the SOS optimization and certificate-extraction pipeline, Lean 4 formalization, and manuscript drafting—was carried out using AI systems under the author's problem selection, direction, and oversight. The mathematical validity of every result does not rely on trusting any AI system or human check: the algebraic SOS identity is independently verified in exact integer arithmetic by `scripts/verify_certificate.py` (`< 1 s`), and all 32 audited declarations are machine-checked end-to-end inside Lean 4's pure kernel (`Audit.lean`, zero `sorry`, zero `native_decide`, standard foundational axioms only).
+
+---
+
 ## References
 
 - Q. Liu, I. Low, Z. Yin, *"Maximal Magic for Two-qubit States"*, *Quantum Sci. Technol.* **11**, 015035 (2026), [`arXiv:2502.17550`](https://arxiv.org/abs/2502.17550).

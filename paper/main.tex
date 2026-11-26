@@ -33,7 +33,7 @@
   citecolor=Teal,
   urlcolor=Navy,
   pdftitle={Rigorous Resolution of the Two-Qubit Maximal Magic Conjecture via SO(6) Geometry and Certified Equivariant Sum-of-Squares Proofs},
-  pdfauthor={LingyeNBird}
+  pdfauthor={Zhaoting Ye}
 }
 
 % Theorem environments
@@ -83,10 +83,10 @@
 \title{\bfseries\Large Rigorous Resolution of the Two-Qubit Maximal Magic Conjecture via $\SO(6)$ Geometry and Certified Equivariant Sum-of-Squares Proofs}
 
 \author{
-  LingyeNBird\thanks{Independent Researcher. Lean~4 formalization, discovery scripts, and standalone Python verifier are available at \url{https://github.com/LingyeNBird/two-qubit-maximal-magic} (release tag \code{v1.0}).}
+  Zhaoting Ye\thanks{Independent Researcher. ORCID: \href{https://orcid.org/0009-0006-8457-0482}{0009-0006-8457-0482}. Email: \href{mailto:lingyenbird@qq.com}{\code{lingyenbird@qq.com}}. Lean~4 formalization, discovery scripts, and standalone Python verifier are available at \url{https://github.com/LingyeNBird/two-qubit-maximal-magic} (release tag \code{v1.1}).}
 }
 
-\date{\today}
+\date{November 26, 2026}
 
 \begin{document}
 
@@ -1032,6 +1032,11 @@ While $n = 1$ (tetrahedron WH-SIC), $n = 2$ (this work, $480$ Pauli $5$-MUB fidu
 Our certification pipeline illustrates both the strengths and the practical limits of exact equivariant SOS proofs in quantum information. Witnessed orbit cancellation (\Cref{lem:orbit-cancel}) removes the dependence on $\lvert G\rvert$ during \emph{formal verification}, making kernel checking feasible even when $\lvert G\rvert$ is large. For larger multi-qubit systems such as $n = 4$ ($4^4 - 1 = 255$ non-identity Pauli coordinates), however, the dominant computational bottleneck lies in the \emph{certificate discovery phase}: constructing a tractable symmetry-reduced SDP over $255$ variables and keeping the monomial support $\lvert F\rvert$ of the resulting exact certificate manageable. By contrast, lower-dimensional symmetric problems with compact algebraic parameterizations---such as two-qutrit magic bounds~\cite{Knipfer2026}, tight Bell and Tsirelson inequalities with permutation symmetry, stabilizer-polytope facets, and polynomial invariants of two-qubit entanglement~\cite{Makhlin2002}---fall well within the practical reach of zero-set face restriction, rank-$1$ Frank--Wolfe discovery, and witnessed pure-kernel certification.
 
 %==============================================================================
+\section*{Statement on AI Assistance and Independent Verification}
+%==============================================================================
+In the interest of full transparency regarding authorship and methodology, the author discloses that the bulk of the technical work in this study---including mathematical proof discovery, construction of the sum-of-squares optimization and certificate-extraction pipeline, Lean~4 formalization, and manuscript drafting---was carried out using AI systems under the author's problem selection, direction, and oversight. The author takes full responsibility for the submission, the accuracy of all reported results, and adherence to scholarly standards. Crucially, the mathematical validity of every theorem in this paper does not rely on trusting any AI system or human check: all algebraic identities are independently verified in exact integer arithmetic by the standalone script \code{scripts/verify\_certificate.py}, and all six parts of \Cref{thm:main} are machine-checked end-to-end inside Lean~4's pure type-checking kernel (\code{Audit.lean}: $32$ audited declarations, zero \code{sorry}, zero \code{native\_decide}, standard foundational axioms only).
+
+%==============================================================================
 \section*{Acknowledgments}
 %==============================================================================
 The author thanks the Lean~4 and Mathlib communities for the open-source verification infrastructure that enabled pure-kernel certification of this proof, and acknowledges Qiaofeng Liu, Ian Low, and Zhewei Yin for formulating the two-qubit maximal magic conjecture and Open Quantum Problem~E28 that motivated this work.
@@ -1054,7 +1059,7 @@ From \Cref{prop:clifford-lift} and \Cref{tab:k6-dict}, the five $\pi/2$ Pauli-ro
 Together, $U_0, U_2, U_3$ are single-qubit Clifford gates while $U_1, U_4$ are maximally entangling two-qubit Clifford rotations.
 
 \subsection{Machine-Readable Certificate, Discovery Scripts, and Standalone Verifier}
-To allow readers without Lean~4 to inspect $Q_1, \dots, Q_7$, $c_1, \dots, c_7$, $D$, and the ideal cofactors $L_0, L_{01}, L_{\mathrm{Pf}}$ directly and reproduce both discovery and verification, the repository (release tag \code{v1.0})
+To allow readers without Lean~4 to inspect $Q_1, \dots, Q_7$, $c_1, \dots, c_7$, $D$, and the ideal cofactors $L_0, L_{01}, L_{\mathrm{Pf}}$ directly and reproduce both discovery and verification, the repository (release tag \code{v1.1})
 \begin{center}
   \url{https://github.com/LingyeNBird/two-qubit-maximal-magic}
 \end{center}
