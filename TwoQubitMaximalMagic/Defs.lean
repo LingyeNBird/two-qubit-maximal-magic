@@ -1,10 +1,11 @@
-import Mathlib.Basic.Complex.Basic
-import Mathlib.Data.Matrix.Basic
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Tactic
+module
 
-open scoped Matrix
+public import Mathlib.Basic.Complex.Basic
+public import Mathlib.Data.Matrix.Basic
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+
+import Mathlib.Tactic
 
 /-!
 # Definitions for the Two-Qubit Maximal Magic Conjecture (Two-Qubit Case of Open Quantum Problem E28)
@@ -17,6 +18,10 @@ This file defines:
   the Stabilizer Rényi Entropy (SRE)
   `sre ψ α = (1 / (1 - α)) * Real.log ((1 / 4) * pauliMoment ψ α)`.
 -/
+
+@[expose] public section
+
+open scoped Matrix
 
 namespace TwoQubitMaximalMagic
 

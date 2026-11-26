@@ -1,10 +1,11 @@
-import TwoQubitMaximalMagic.MainTheorem
-import Mathlib.Data.Set.Card
-import Mathlib.LinearAlgebra.Matrix.Trace
+module
+
+public import TwoQubitMaximalMagic.MainTheorem
+public import Mathlib.Data.Set.Card
+public import Mathlib.LinearAlgebra.Matrix.Trace
+
 import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
 import Mathlib.Tactic
-
-open scoped Matrix
 
 /-!
 # Complete Characterization of All 480 Two-Qubit Maximal Magic States
@@ -48,6 +49,10 @@ characterizations of the two-qubit maximal magic states:
    Weyl–Heisenberg (Pauli) orbit `{P_{a,b}|ψ⟩}` partitions into 4 orthonormal bases that extend
    to a complete set of `d + 1 = 5` mutually unbiased bases (MUBs) in `ℂ⁴`.
 -/
+
+@[expose] public section
+
+open scoped Matrix
 
 namespace TwoQubitMaximalMagic
 
@@ -1068,6 +1073,7 @@ lemma cliffGen_conj_edgeSignedPauli (k : Fin 5) (e : Fin 15) :
             (((pauli1MulPow (edgePauliLabel e₀).1 (edgePauliLabel e).1).val +
               (pauli1MulPow (edgePauliLabel e₀).2 (edgePauliLabel e).2).val) % 4)) := by ring
     rw [hrearr, hpow_c]
+    push_cast
     exact hcast
   · have hcomm : P * Q = Q * P := by
       have h1 := (pauli2_commute_iff_bool (edgePauliLabel e₀) (edgePauliLabel e)).mpr hb

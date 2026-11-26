@@ -1,7 +1,8 @@
-import TwoQubitMaximalMagic.Maximizers
-import Mathlib.Tactic
+module
 
-open scoped Matrix
+public import TwoQubitMaximalMagic.Maximizers
+
+import Mathlib.Tactic
 
 /-!
 # Entanglement (Concurrence) of All 480 Two-Qubit Maximal Magic States
@@ -32,6 +33,10 @@ magic states (for every Rényi order `α ≥ 2`):
    × `32`) have `C(|ψ⟩) = 1/2`, and **exactly 288** (`9` triangle-hitting matchings × `32`,
    including `mubFiducial`) have `C(|ψ⟩) = 1/√2`.
 -/
+
+@[expose] public section
+
+open scoped Matrix
 
 namespace TwoQubitMaximalMagic
 

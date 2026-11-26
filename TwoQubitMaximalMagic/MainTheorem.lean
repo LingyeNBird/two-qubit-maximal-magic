@@ -1,4 +1,7 @@
-import TwoQubitMaximalMagic.Certificate
+module
+
+public import TwoQubitMaximalMagic.Certificate
+
 import Mathlib.Analysis.MeanInequalities
 import Mathlib.Tactic
 
@@ -29,6 +32,8 @@ See `TwoQubitMaximalMagic/Maximizers.lean` for the further formal proofs that:
 - a normalized state maximizes `M_α` (`α ≥ 2`) iff it is a two-qubit Pauli (multi-qubit
   Weyl–Heisenberg) 5-MUB fiducial state.
 -/
+
+@[expose] public section
 
 namespace TwoQubitMaximalMagic
 

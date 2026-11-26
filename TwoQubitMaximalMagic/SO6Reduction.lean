@@ -1,10 +1,11 @@
-import TwoQubitMaximalMagic.Defs
-import Mathlib.GroupTheory.Perm.Sign
-import Mathlib.Data.Fintype.Perm
-import Mathlib.Data.Matrix.Mul
-import Mathlib.Tactic
+module
 
-open scoped Matrix
+public import TwoQubitMaximalMagic.Defs
+public import Mathlib.GroupTheory.Perm.Sign
+public import Mathlib.Data.Fintype.Perm
+public import Mathlib.Data.Matrix.Mul
+
+import Mathlib.Tactic
 
 /-!
 # The `su(4) ≅ so(6)` Reduction and the Signed-Permutation Group `B₆⁺`
@@ -20,6 +21,10 @@ We also define the finite symmetry group `B6Plus ⊂ SO(6)` (order `6! · 2⁵ =
 of determinant-`+1` signed permutations of `Fin 6`, prove that it acts on `Fin 15 → ℝ`
 preserving `IsSkewOrth6`, and prove that `B6Plus` acts transitively (up to sign) on all 15 edges.
 -/
+
+@[expose] public section
+
+open scoped Matrix
 
 namespace TwoQubitMaximalMagic
 

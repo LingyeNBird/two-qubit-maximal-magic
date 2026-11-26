@@ -1,4 +1,7 @@
-import TwoQubitMaximalMagic.CertificateData
+module
+
+public import TwoQubitMaximalMagic.CertificateData
+
 import Mathlib.Tactic
 
 /-!
@@ -11,6 +14,8 @@ that for every `a : Fin 15 → ℝ` satisfying `IsSkewOrth6 a`:
    in which case exactly 3 edges vanish (forming a perfect matching of `K₆`, i.e., one
    vanishing edge incident to every vertex) and 12 edges satisfy `|a e| = 1 / 2`.
 -/
+
+@[expose] public section
 
 namespace TwoQubitMaximalMagic
 

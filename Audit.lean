@@ -1,4 +1,6 @@
-import TwoQubitMaximalMagic
+module
+
+public import TwoQubitMaximalMagic
 
 /-!
 # Axiom & Statement Audit Script

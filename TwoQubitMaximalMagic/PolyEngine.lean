@@ -1,4 +1,7 @@
-import TwoQubitMaximalMagic.SO6Reduction
+module
+
+public import TwoQubitMaximalMagic.SO6Reduction
+
 import Mathlib.Tactic
 
 /-!
@@ -9,6 +12,8 @@ This module provides a pure-kernel (zero `native_decide`) polynomial engine over
 merge-sort normalization `normPoly`, computable `B₆⁺` witnesses `B6Wit`, and the master
 orbit-cancellation theorem `sum_B6Plus_evalPoly_eq_zero_of_verify`.
 -/
+
+@[expose] public section
 
 namespace TwoQubitMaximalMagic
 

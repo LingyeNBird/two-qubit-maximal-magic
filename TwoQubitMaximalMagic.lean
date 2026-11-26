@@ -1,6 +1,8 @@
-import TwoQubitMaximalMagic.MainTheorem
-import TwoQubitMaximalMagic.Maximizers
-import TwoQubitMaximalMagic.Entanglement
+module
+
+public import TwoQubitMaximalMagic.MainTheorem
+public import TwoQubitMaximalMagic.Maximizers
+public import TwoQubitMaximalMagic.Entanglement
 
 /-!
 # Formal Proof of the Two-Qubit Maximal Magic Conjecture
