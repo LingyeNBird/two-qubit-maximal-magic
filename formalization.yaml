@@ -1,0 +1,172 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Rigorous Resolution of the Two-Qubit Maximal Magic Conjecture"
+  description: >-
+    Pure-kernel Lean 4 formalization resolving the two-qubit (n = 2) maximal magic conjecture of
+    Liu, Low, and Yin (Quantum Sci. Technol. 11, 015035, 2026; Open Quantum Problem E28) for all
+    Stabilizer Rényi Entropy (SRE) orders α ≥ 2. Using the SU(4) ≅ Spin(6) reduction onto the
+    positively oriented skew-orthogonal manifold in SO(6) and an exact degree-8 B₆⁺-equivariant
+    rational sum-of-squares certificate verified by definitional equality inside Lean's kernel, the
+    formalization proves the sharp upper bound M_α(|ψ⟩) ≤ (1/(1-α)) log((1 + 3·4^(1-α))/4)
+    (in particular max M_2 = log(16/7)), proves attainment by |ψ_MUB⟩ = (1/2)(1, 1, 1, i),
+    classifies all maximizers as a single two-qubit Clifford orbit of exact cardinality 480
+    coinciding with the two-qubit Pauli 5-MUB fiducial states, and proves the exact Wootters
+    concurrence dichotomy C ∈ {1/2, 1/√2} with 192 / 288 state counts.
+    AI-assistance disclosure: the bulk of the technical work (proof discovery, SOS certificate
+    pipeline, Lean 4 formalization, and manuscript drafting) was carried out using AI systems under
+    the author's problem selection, direction, and oversight; mathematical correctness rests on
+    Lean 4's kernel verification and the standalone exact-integer Python certificate verifier.
+  authors:
+    - "Zhaoting Ye"
+  license: "MIT"
+  responsible_maintainers:
+    - "Zhaoting Ye"
+
+classification:
+  arxiv: ["quant-ph", "math.OC"]
+  msc2020: ["81P45", "81P40", "90C22", "15A66"]
+
+sources:
+  - title: "Rigorous Resolution of the Two-Qubit Maximal Magic Conjecture via SO(6) Geometry and Certified Equivariant Sum-of-Squares Proofs"
+    authors:
+      - "Zhaoting Ye"
+    id: "https://doi.org/10.5281/zenodo.24565157"
+    type: original-proof
+    location: "https://github.com/LingyeNBird/two-qubit-maximal-magic"
+    relationship: other
+    note: "First presentation of this proof (author ORCID 0009-0006-8457-0482). Companion manuscript (paper/main.pdf), reproducible C++17/Python SOS certificate discovery pipeline, and standalone exact-integer verifier (scripts/verify_certificate.py) archived at Zenodo concept DOI 10.5281/zenodo.24565157."
+    license: "MIT"
+  - title: "Maximal Magic for Two-qubit States"
+    authors:
+      - "Qiaofeng Liu"
+      - "Ian Low"
+      - "Zhewei Yin"
+    id: "https://doi.org/10.1088/2058-9565/ae2c4f"
+    type: "paper"
+    location: "Quantum Sci. Technol. 11, 015035 (2026); arXiv:2502.17550"
+    relationship: background
+    note: "Poses the two-qubit maximal magic conjecture (max M_2 = ln(16/7)), identifies the 480 MUB fiducial maximizers numerically, and conjectures the general n-qubit formula."
+  - title: "Open Quantum Problem E28: Maximal stabilizer Rényi entropy without a Weyl–Heisenberg SIC"
+    contributors:
+      - name: "Jean-Philippe Bruneton"
+        role: "catalogue maintainer"
+    id: "https://openquantumproblems.com/p/E28"
+    type: "other"
+    location: "https://openquantumproblems.com/p/E28"
+    relationship: background
+    note: "Curated catalogue web page tracking E28; lists this two-qubit proof and the companion n >= 3 MUB non-existence proof as partial progress (26 November 2026)."
+  - title: "The Pareto Frontiers of Magic and Entanglement: The Case of Two Qubits"
+    authors:
+      - "Stefan Roman"
+      - "Jonas Knipfer"
+      - "E. Suda Neto"
+      - "Konstantin Matchev"
+      - "Katia Matcheva"
+      - "Sergei Gleyzer"
+    id: "https://arxiv.org/abs/2603.24902"
+    type: "paper"
+    location: "arXiv:2603.24902 (2026)"
+    relationship: background
+    note: "Derives analytic two-qubit magic-entanglement frontier families and reports the 192 / 288 boundary family counts without proving global exhaustiveness."
+  - title: "Stabilizer Rényi Entropy"
+    authors:
+      - "Lorenzo Leone"
+      - "Salvatore F. E. Oliviero"
+      - "Alioscia Hamma"
+    id: "https://doi.org/10.1103/PhysRevLett.128.050402"
+    type: "paper"
+    location: "Phys. Rev. Lett. 128, 050402 (2022); arXiv:2106.12587"
+    relationship: background
+    note: "Introduces the Stabilizer Rényi Entropy M_α."
+  - title: "Entanglement of Formation of an Arbitrary State of Two Qubits"
+    authors:
+      - "William K. Wootters"
+    id: "https://doi.org/10.1103/PhysRevLett.80.2245"
+    type: "paper"
+    location: "Phys. Rev. Lett. 80, 2245 (1998)"
+    relationship: background
+    note: "Defines two-qubit concurrence C(|ψ⟩) = |⟨ψ*|Y ⊗ Y|ψ⟩|."
+
+related_formalizations:
+  - id: "https://doi.org/10.5281/zenodo.24566133"
+    relationship: independent
+    note: "Companion Lean 4 formalization by the same author (multi-qubit-mub-nonexistence) proving that no n-qubit Pauli-covariant MUB fiducial exists for any n >= 3, ruling out the conjectured WH-MUB mechanism for n >= 4."
+
+status:
+  scope: >-
+    Formalizes in full the n = 2 case of Open Quantum Problem E28 for all Rényi orders α ≥ 2:
+    sharp upper bound, attainment, Pauli-spectrum criterion, single two-qubit Clifford orbit,
+    exact cardinality 480 of maximizer density matrices, equivalence with two-qubit Pauli 5-MUB
+    fiducials, and exact 192 / 288 Wootters concurrence split C ∈ {1/2, 1/√2}. Higher-qubit cases
+    (n ≥ 4) of E28, orders α < 2, and non-Pauli cyclic Z_4 displacement groups are not addressed here.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: agent
+      models: []
+      framework: "AI coding and reasoning agents"
+      tool_setup: >-
+        Lean 4 v4.36.0 with Mathlib v4.36.0 (pure-kernel rfl certificate verification, zero
+        native_decide); C++17 (extract_int_cert.cpp) and Python 3 standard library for exact
+        degree-8 equivariant SOS certificate discovery and independent verification.
+      cost:
+        wall_time: "multiple iterative agent sessions"
+        spend_usd: "not tracked"
+        hardware: "local Linux workstation"
+      prompting_notes: "Problem selection, direction, oversight, citation auditing, and verification checks directed by Zhaoting Ye; proof discovery, SOS pipeline construction, Lean 4 formalization, and manuscript drafting carried out with AI agents."
+  spend_usd: "not tracked"
+  notes: >-
+    AI systems produced the bulk of the proof discovery, SOS certificate extraction, Lean 4 code,
+    and companion manuscript under Zhaoting Ye's direction and oversight. All claims in Challenge.lean
+    are mechanically checked by Lean 4's kernel (standard axioms only) and cross-checked by the
+    standalone exact-integer Python verifier scripts/verify_certificate.py.
+
+fidelity:
+  divergences: >-
+    sre uses the natural logarithm Real.log rather than log_2; dividing both sides of the SRE
+    inequalities by Real.log 2 recovers the base-2 convention, and the underlying Pauli-moment
+    bounds (pauli_fourth_moment_lower_bound, pauli_moment_lower_bound_all_alpha) are logarithm-free.
+    IsPauliMUBFiducial uses the multi-qubit Pauli (product Weyl–Heisenberg) group P_2 = {I,X,Y,Z}^⊗2
+    as in Liu–Low–Yin (2026), rather than the cyclic Z_4 Weyl–Heisenberg group.
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "none"
+  notes: >-
+    Not formally peer reviewed. All 32 audited declarations pass Lean 4 pure-kernel verification
+    (Audit.lean) and scripts/verify_certificate.py passes in < 1 s. On 26 November 2026, the Open
+    Quantum Problems catalogue (jpbruneton/open_quantum_problems, issue #26) independently rebuilt
+    and verified the degree-8 B₆⁺-symmetrized SOS certificate with separate code and recorded the
+    result on openquantumproblems.com/p/E28 without re-running the Lean build.
+
+alignment:
+  namespace: "TwoQubitMaximalMagic.Challenge"
+  statements:
+    - source: "Liu–Low–Yin (2026) two-qubit conjecture (α = 2)"
+      lean: "TwoQubitMaximalMagic.Challenge.sre2_upper_bound"
+      module: "Challenge"
+      status: proved
+      note: "Exact M_2(|ψ⟩) ≤ ln(16/7) (paired with pauli_fourth_moment_lower_bound and mub_fiducial_attains_sre2)."
+    - source: "General α ≥ 2 extension (all Rényi orders)"
+      lean: "TwoQubitMaximalMagic.Challenge.sre_upper_bound_all_alpha"
+      module: "Challenge"
+      status: proved
+      note: "Sharp upper bound for all α ≥ 2 (paired with pauli_moment_lower_bound_all_alpha and mub_fiducial_attains_sre)."
+    - source: "Complete classification of 480 maximizers (single Clifford orbit = Pauli 5-MUB fiducials)"
+      lean: "TwoQubitMaximalMagic.Challenge.maximizer_densityMatrix_ncard_eq_480"
+      module: "Challenge"
+      status: proved
+      note: "Combined with maximizer_iff_mub_spectrum, maximizer_iff_clifford_orbit, and maximizer_iff_pauli_mub_fiducial."
+    - source: "Wootters concurrence dichotomy C ∈ {1/2, 1/√2} and 192 / 288 distribution"
+      lean: "TwoQubitMaximalMagic.Challenge.maximizer_concurrence_distribution"
+      module: "Challenge"
+      status: proved
+      note: "Combined with concurrence_eq_wootters and maximizer_concurrence_dichotomy."
+
+acknowledgements: "Mathlib4 community; Lean 4; Open Quantum Problems catalogue (Jean-Philippe Bruneton) for independent verification of the degree-8 SOS certificate."

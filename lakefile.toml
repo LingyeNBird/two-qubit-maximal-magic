@@ -1,6 +1,6 @@
 name = "TwoQubitMaximalMagic"
 version = "0.1.0"
-defaultTargets = ["TwoQubitMaximalMagic"]
+defaultTargets = ["TwoQubitMaximalMagic", "Solution"]
 
 [[require]]
 name = "mathlib"
@@ -9,3 +9,11 @@ rev = "v4.36.0"
 
 [[lean_lib]]
 name = "TwoQubitMaximalMagic"
+
+[[lean_lib]]
+name = "Challenge"
+roots = ["Challenge"]
+
+[[lean_lib]]
+name = "Solution"
+roots = ["Solution"]
