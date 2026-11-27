@@ -2,6 +2,7 @@
 
 [![Lean 4 CI](https://github.com/LingyeNBird/two-qubit-maximal-magic/actions/workflows/lean_ci.yml/badge.svg)](https://github.com/LingyeNBird/two-qubit-maximal-magic/actions/workflows/lean_ci.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24565157.svg)](https://doi.org/10.5281/zenodo.24565157)
+[![Palomar Registry](https://img.shields.io/badge/Palomar-PALOMAR--2026--11--27--000019%20v1-blue)](https://palomar-registry.org/entry?id=PALOMAR-2026-11-27-000019&version=1)
 
 A complete, pure-kernel **Lean 4** (`v4.36.0` + Mathlib4) proof of the **two-qubit ($n = 2$) maximal magic conjecture** of Q. Liu, I. Low, and Z. Yin (*"Maximal Magic for Two-qubit States"*, *Quantum Sci. Technol.* **11**, 015035, 2026; [`arXiv:2502.17550`](https://arxiv.org/abs/2502.17550)), which resolves the two-qubit $\max M_2 = \ln(16/7)$ subproblem of [Open Quantum Problem E28](https://openquantumproblems.com/p/E28) and extends it to all Rényi orders $\alpha \ge 2$, together with a complete formal characterization of all **480** maximal-magic states and their entanglement (concurrence) distribution.
 
@@ -106,6 +107,7 @@ Furthermore, for every $\alpha \ge 2$:
 | `TwoQubitMaximalMagic/Entanglement.lean` | Wootters concurrence, reduced density matrices, strict $C \in \{1/2, 1/\sqrt{2}\}$ dichotomy, no maximally entangled / separable maximizers, and exact `192 / 288` split |
 | `TwoQubitMaximalMagic.lean` | Root library export |
 | `Audit.lean` | Standalone `#check` and `#print axioms` audit script (32 audited declarations) |
+| `Challenge.lean`, `Solution.lean`, `comparator.json`, `formalization.yaml` | Palomar Registry submission files (`Mathlib`-only 218-line trusted statement surface for all 13 headline theorems, verified by Lean, `nanoda`, and `con-ron`) |
 | `scripts/exact_certificate.json` | Machine-readable exact integer SOS certificate ($D, c_k, Q_k$, cofactors, and 1,409 $B_6^+$ witnesses) |
 | `scripts/verify_certificate.py` | Standalone zero-dependency Python verifier (`< 1 s`, checks direct $B_6^+$ symmetrization and all 1,409 witnesses without Lean) |
 | `scripts/extract_int_cert.cpp`, `verify_exact_Q.py`, `compute_cofactors.py`, `build_witness_table.py`, `gen_lean_cert.py` | Complete 5-stage reproducible discovery pipeline reproducing `exact_certificate.json` and `CertificateData.lean` byte-for-byte |
@@ -164,6 +166,7 @@ lake env lean Audit.lean
 
 - **Author**: Zhaoting Ye (Independent Researcher; ORCID: [0009-0006-8457-0482](https://orcid.org/0009-0006-8457-0482); Email: `lingyenbird@qq.com`)
 - **Archival DOI (Zenodo)**: [`10.5281/zenodo.24565157`](https://doi.org/10.5281/zenodo.24565157) (concept DOI, resolves to latest release `v1.2`)
+- **Palomar Registry (Independent Multi-Kernel Verification)**: [`PALOMAR-2026-11-27-000019 v1`](https://palomar-registry.org/entry?id=PALOMAR-2026-11-27-000019&version=1) (13 compared declarations, `Mathlib`-only statement dependencies, independently verified by Lean 4, `nanoda`, and `con-ron` kernels; automated editorial review, not human peer review)
 - **AI Assistance & Independent Verification**: In the interest of full transparency, the bulk of the technical work in this repository—including mathematical proof discovery, construction of the SOS optimization and certificate-extraction pipeline, Lean 4 formalization, and manuscript drafting—was carried out using AI systems under the author's problem selection, direction, and oversight. The mathematical validity of every result does not rely on trusting any AI system or human check: the algebraic SOS identity is independently verified in exact integer arithmetic by `scripts/verify_certificate.py` (`< 1 s`), and all 32 audited declarations are machine-checked end-to-end inside Lean 4's pure kernel (`Audit.lean`, zero `sorry`, zero `native_decide`, standard foundational axioms only).
 
 ---
