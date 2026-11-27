@@ -43,7 +43,7 @@ sources:
       - "Qiaofeng Liu"
       - "Ian Low"
       - "Zhewei Yin"
-    id: "https://doi.org/10.1088/2058-9565/ae2c4f"
+    id: "https://doi.org/10.1088/2058-9565/ae3028"
     type: "paper"
     location: "Quantum Sci. Technol. 11, 015035 (2026); arXiv:2502.17550"
     relationship: background
@@ -59,10 +59,10 @@ sources:
     note: "Curated catalogue web page tracking E28; lists this two-qubit proof and the companion n >= 3 MUB non-existence proof as partial progress (26 November 2026)."
   - title: "The Pareto Frontiers of Magic and Entanglement: The Case of Two Qubits"
     authors:
-      - "Stefan Roman"
-      - "Jonas Knipfer"
-      - "E. Suda Neto"
-      - "Konstantin Matchev"
+      - "Alexander Roman"
+      - "Marco Knipfer"
+      - "Jogi Suda Neto"
+      - "Konstantin T. Matchev"
       - "Katia Matcheva"
       - "Sergei Gleyzer"
     id: "https://arxiv.org/abs/2603.24902"
@@ -108,8 +108,10 @@ status:
 automation:
   methods:
     - method: agent
-      models: []
-      framework: "AI coding and reasoning agents"
+      models:
+        - "Gemini 4 Neon"
+        - "Claude Opus 5.5"
+      framework: "Google Antigravity"
       tool_setup: >-
         Lean 4 v4.36.0 with Mathlib v4.36.0 (pure-kernel rfl certificate verification, zero
         native_decide); C++17 (extract_int_cert.cpp) and Python 3 standard library for exact
